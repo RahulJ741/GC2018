@@ -1,5 +1,5 @@
 class HotelController < ApplicationController
-
+  before_action :check_cookie
   require 'uri'
   require 'net/http'
 

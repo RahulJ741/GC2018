@@ -1,4 +1,5 @@
 class StaticpageController < ApplicationController
+  before_action :check_cookie
   require 'uri'
   require 'net/http'
   require 'digest/md5'
@@ -115,14 +116,14 @@ class StaticpageController < ApplicationController
     # puts session.inspect
     puts session[:user_id]
 
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-
-    else
-      @current_user = nil
-    end
-     @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #
+    # else
+    #   @current_user = nil
+    # end
+    #  @cart_count = Cart.where(:user_id => session[:user_id]).count
 
     # @current_user = User.find(session[:user_id])
 
@@ -135,74 +136,74 @@ class StaticpageController < ApplicationController
   end
 
   def city
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-       @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #    @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   @current_user = nil
+    # end
   end
 
   def privacy
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-       @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #    @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   @current_user = nil
+    # end
   end
 
   def lookandbrand
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-       @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #    @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   @current_user = nil
+    # end
 
   end
 
   def whoweare
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-       @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #    @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   @current_user = nil
+    # end
   end
 
   def contact
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-       @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      # @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #    @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   # @current_user = nil
+    # end
   end
 
   def sports
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-       @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      # @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #    @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   # @current_user = nil
+    # end
   end
 
   def package
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-       @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      # @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #    @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   # @current_user = nil
+    # end
 
   end
 
@@ -255,215 +256,215 @@ class StaticpageController < ApplicationController
     end
 
 
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   @current_user = nil
+    # end
   end
 
   def createownpackage
 
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   @current_user = nil
+    # end
 
   end
 
 
 
   def swimmingpackages
-    @cart_count = Cart.where(:user_id => session[:user_id]).count
-    if session[:user_id]
-
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-    else
-      @current_user = nil
-    end
+    # @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # if session[:user_id]
+    #
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    # else
+    #   @current_user = nil
+    # end
 
   end
 
   def athleticspackages
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-       @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #    @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   @current_user = nil
+    # end
 
   end
 
   def rugbypackages
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-       @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #    @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   @current_user = nil
+    # end
 
   end
 
   def openingpackages
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-       @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #    @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   @current_user = nil
+    # end
 
   end
 
   def rugbypackages_gold
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-       @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-      #  def check_user
-
-
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #    @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    #   #  def check_user
+    #
+    #
+    # else
+    #   @current_user = nil
+    # end
 
   end
 
   def rugbypackages_silver
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-       @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #    @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   @current_user = nil
+    # end
 
   end
 
   def rugbypackages_bronze
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    # else
+    #   @current_user = nil
+    # end
 
   end
 
   def athleticspackages_platinum
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    # else
+    #   @current_user = nil
+    # end
 
   end
 
   def athleticspackages_gold
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-    else
-      @current_user = nil
-    end
-
-
-    url = URI("https://kingdomsg.eventsair.com/ksgapi/gc2018/tour/ksgapi/GetPackages")
-    data = get_function(url)
-    @event = []
-    for i in data['Packages']
-      data1 = {}
-      data1['id'] = i['Id']
-      data1['Amount'] = i['PackageAmount']
-      data1['Code'] = i['UniquePackageCode'].first
-      data1['Hotel'] = []
-      data1['Event'] = []
-
-      for b in i['HotelRooms']
-        data2 = {}
-        data2['Hotelname'] = b['HotelName']
-        data2['Room_type'] = b['Name'].split('-').first
-        data2['max_people'] = b['MaxOccupancy']
-        data2['photo'] = b['Photos']
-        data2['start_date'] = b['Range'].first['Date']
-        data2['end_date'] = b['Range'].last['Date']
-        data1['Hotel'].push(data2)
-      end
-      for e in i['Functions']
-        data3 = {}
-        data3['Name'] = e['FunctionGroupName']
-        data3['Date'] = e['FunctionName'].split[-4]
-        data3['start_time'] = e['FunctionName'].split[-3]
-        data3['end_time'] = e['FunctionName'].split.last
-        data3['category'] = e['Name']
-        # data3['code_to_check'] = e['FunctionName'].split(" ").first
-        # puts "+++++++++++++++++++++++++++++++++++++++++++++++"
-        # puts data3['code_to_check']
-        data3['cat_code'] = e['Code']
-        data1['Event'].push(data3)
-      end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    # else
+    #   @current_user = nil
+    # end
 
 
-      @event.push(data1)
-    end
+    # url = URI("https://kingdomsg.eventsair.com/ksgapi/gc2018/tour/ksgapi/GetPackages")
+    # data = get_function(url)
+    # @event = []
+    # for i in data['Packages']
+    #   data1 = {}
+    #   data1['id'] = i['Id']
+    #   data1['Amount'] = i['PackageAmount']
+    #   data1['Code'] = i['UniquePackageCode'].first
+    #   data1['Hotel'] = []
+    #   data1['Event'] = []
+    #
+    #   for b in i['HotelRooms']
+    #     data2 = {}
+    #     data2['Hotelname'] = b['HotelName']
+    #     data2['Room_type'] = b['Name'].split('-').first
+    #     data2['max_people'] = b['MaxOccupancy']
+    #     data2['photo'] = b['Photos']
+    #     data2['start_date'] = b['Range'].first['Date']
+    #     data2['end_date'] = b['Range'].last['Date']
+    #     data1['Hotel'].push(data2)
+    #   end
+    #   for e in i['Functions']
+    #     data3 = {}
+    #     data3['Name'] = e['FunctionGroupName']
+    #     data3['Date'] = e['FunctionName'].split[-4]
+    #     data3['start_time'] = e['FunctionName'].split[-3]
+    #     data3['end_time'] = e['FunctionName'].split.last
+    #     data3['category'] = e['Name']
+    #     # data3['code_to_check'] = e['FunctionName'].split(" ").first
+    #     # puts "+++++++++++++++++++++++++++++++++++++++++++++++"
+    #     # puts data3['code_to_check']
+    #     data3['cat_code'] = e['Code']
+    #     data1['Event'].push(data3)
+    #   end
+    #
+    #
+    #   @event.push(data1)
+    # end
 
   end
 
   def athleticspackages_silver
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    # else
+    #   @current_user = nil
+    # end
 
   end
 
   def athleticspackages_silver_brisbane
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    # else
+    #   @current_user = nil
+    # end
 
   end
 
   def athleticspackages_bronze
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    # else
+    #   @current_user = nil
+    # end
 
   end
 
@@ -542,15 +543,15 @@ class StaticpageController < ApplicationController
 
 
   def tour
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    # else
+    #   @current_user = nil
+    # end
   end
 
   def self.book_function
@@ -577,15 +578,15 @@ class StaticpageController < ApplicationController
   # comment out after demo
 
 def thank_you
-  if session[:user_id]
-    @current_user = User.find(session["user_id"])
-    puts session[:user_id]
-    # @cart = ShoppingCart.where(:user_id => session[:user_id])
-    @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-  else
-    @current_user = nil
-  end
+  # if session[:user_id]
+  #   @current_user = User.find(session["user_id"])
+  #   puts session[:user_id]
+  #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+  #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+  #
+  # else
+  #   @current_user = nil
+  # end
 
 end
 
@@ -630,51 +631,51 @@ end
  end
 
   def netball
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    # else
+    #   @current_user = nil
+    # end
   end
 
   def openingpackagesinfo
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    # else
+    #   @current_user = nil
+    # end
   end
 
   def swimmingpackagesinfo
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    # else
+    #   @current_user = nil
+    # end
   end
 
   def netball_detail
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    # else
+    #   @current_user = nil
+    # end
   end
 
 
@@ -682,15 +683,15 @@ end
 
   def get_packages
 
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    # else
+    #   @current_user = nil
+    # end
 
 
     @category_name = params[:category]
@@ -776,15 +777,15 @@ end
 
 
   def stats
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    # else
+    #   @current_user = nil
+    # end
 
     staticpage_redirect = {
       "Opening+Ceremony/Silver" => 'staticpage/openingpackages.html.erb',
@@ -819,15 +820,15 @@ end
 
 
   def hotel_info_redirect
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      # @cart = ShoppingCart.where(:user_id => session[:user_id])
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   puts session[:user_id]
+    #   # @cart = ShoppingCart.where(:user_id => session[:user_id])
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    #
+    # else
+    #   @current_user = nil
+    # end
 
     hotel_info = {
       'Ocean Pacific Resort' => '/hotel/ocean_pacific',

@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+	before_action :check_cookie
 	def index
 		if session[:user_id]
 	      @current_user = User.find(session["user_id"])

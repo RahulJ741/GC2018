@@ -1,5 +1,5 @@
 class EventController < ApplicationController
-
+  before_action :check_cookie
   def helpers
     ActionController::Base.helpers
   end
@@ -56,16 +56,16 @@ class EventController < ApplicationController
     # end
 
 
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      session[:url] = request.original_url
-      # puts "check out this shit"
-      puts session[:url]
-      puts session[:user_id]
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      @current_user = nil
-    end
+    # if session[:user_id]
+    #   @current_user = User.find(session["user_id"])
+    #   session[:url] = request.original_url
+    #   # puts "check out this shit"
+    #   puts session[:url]
+    #   puts session[:user_id]
+    #   @cart_count = Cart.where(:user_id => session[:user_id]).count
+    # else
+    #   @current_user = nil
+    # end
   end
 
   def show
@@ -75,13 +75,13 @@ class EventController < ApplicationController
     @event_cats = data['FunctionInfo']['FeeTypes']
     @event_cats = @event_cats.sort_by { |hsh| hsh['Name'] }
     @prev_url = request.referrer
-    if session[:user_id]
-      @current_user = User.find(session["user_id"])
-      puts session[:user_id]
-      @cart_count = Cart.where(:user_id => session[:user_id]).count
-    else
-      @current_user = nil
-    end
+  #   if session[:user_id]
+  #     @current_user = User.find(session["user_id"])
+  #     puts session[:user_id]
+  #     @cart_count = Cart.where(:user_id => session[:user_id]).count
+  #   else
+  #     @current_user = nil
+  #   end
   end
 
 end

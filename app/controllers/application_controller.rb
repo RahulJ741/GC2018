@@ -6,6 +6,46 @@ class ApplicationController < ActionController::Base
   $country = Country.all
 
 
+  def check_cookie
+    # if cookies[:ip_address].present?
+    if session[:ip_address].present?
+      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>"
+      # puts cookies[:ip_address]
+      # cookies[:cart_details] = { value: {comment: 1, data: 15}.to_yaml}
+      puts session[:cart_details]
+      session[:cart_count] = session[:cart_details].count
+      # if cookies[:cart_details][:quantity].empty?
+      # #   cookies[:cart_details] = {value: {quantity: [], id: [], uid: [], cat_code: [], type: []} }
+      # else
+      #   puts cookies[:cart_details]
+      # end
+       #JSON.generate([comment: 1, data: 15])
+       if not session[:cart_details].blank?
+        #  puts JSON.parse(cookies[:cart_details])
+        #  cookies[:cart_count] = JSON.parse(cookies[:cart_details])['id'].count
+
+        puts "PPPPPPPPPPPPPPPPPPPPPP"
+       else
+         puts "empty"
+       end
+
+
+    else
+      puts "|||||||||||||||\\"
+      puts "here"
+      # cookies[:ip_address] = request.ip
+      # cookies[:cart_details] = {value: [] }
+      # cookies[:cart_count] = 0
+      # puts cookies[:cart_details]
+      session[:ip_address] = request.ip
+      session[:cart_details] ||= []
+      session[:cart_count] = 0
+      puts session[:ip_address]
+      # {quantity: [] , id: [], uid: [], cat_code: [], type: []}
+    end
+  end
+
+
 
   def kingdomsg_api(url)
     http = Net::HTTP.new(url.host, url.port)

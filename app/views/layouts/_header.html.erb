@@ -61,26 +61,10 @@
   							</li>
   							<li><a href="/whoweare" style="text-transform: none;">About Us </a></li>
   							<li><a href="/lookandbrand" style="text-transform: none;">Look & Brand</a></li>
-                <% if @current_user.present? %>
-                  <%= puts @current_user.inspect %>
-                  <%= puts "?????????????????????????????"%>
-                  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-transform: none;">Account</a>
-    								<ul class="dropdown-menu ">
-    									<li role="presentation" ><a role="menuitem" tabindex="-1" href="/my_transaction" style="font-size: 18px !important;"><i class="fa fa-credit-card" aria-hidden="true"></i> My Transactions</a></li>
-                      <li role="presentation" ><a role="menuitem" tabindex="-1" href="/update_profile" style="font-size: 18px !important;"><i class="fa fa-info-circle" aria-hidden="true"></i> Edit Profile</a></li>
-          						<li role="presentation" class="divider"></li>
-          						<li role="presentation" ><a role="menuitem" tabindex="-1" href="/logout" style="font-size: 18px !important;"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
-    								</ul>
-    							</li>
-                <%else%>
-                  <li data-toggle="modal" data-target="#loginModal">
-                    <a href="javascript:void(0)" style="text-transform: none;">Account</a>
-                  </li>
-                <%end%>
 
-                <% if @current_user.present? %>
+                <% if session[:ip_address].present? %>
                   <li>
-                    <a href="/cart" style="margin-top:-8px; display: block;"><span class="fa fa-shopping-cart fa-lg"><sup style="font-size: 16px;margin: 5px;font-family: "proxima_nova_condensedregular";"><%= @cart_count %></sup></span></a>
+                    <a href="/cart" style="margin-top:-8px; display: block;"><span class="fa fa-shopping-cart fa-lg"><sup style="font-size: 16px;margin: 5px;font-family: "proxima_nova_condensedregular";"><%= session[:cart_count] %></sup></span></a>
                   </li>
                 <% else %>
                 <% end %>
