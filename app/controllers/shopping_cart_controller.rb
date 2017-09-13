@@ -38,6 +38,7 @@ class ShoppingCartController < ApplicationController
           event = Event.find(i["id"])
           # data1['cart_id'] = i.id
           data1['item_type'] = 'Event'
+          data1['id'] = i['uid']
           data1['name'] = event.name+", "+catagory['Name']
           data1['available'] = catagory['Available']
           data1['amount'] =  catagory['Amount'].to_f % 1 == 0 ? catagory['Amount'].to_i : helpers.number_with_precision(catagory['Amount'].to_f, :precision => 2)
@@ -59,6 +60,7 @@ class ShoppingCartController < ApplicationController
           puts data
           pack = data['Package']
           # data1['cart_id'] = i.id
+          data1['id'] = i['uid']
           data1['item_type'] = 'Package'
           data1['name'] = pack['PackageGroupName']+ " " +pack['Functions'].first['FunctionGroupName']
           data1['amount'] = pack['PackageAmount']
@@ -87,8 +89,8 @@ class ShoppingCartController < ApplicationController
   # end
 
   def remove
-    
-    @cart = Cart.find(params[:id]).destroy
+    session[:cart_details].delete_if { |e| e['uid'].include?(params[:id]) }
+    # @cart = Cart.find(params[:id]).destroy
 
     redirect_to :back, :flash => {:success => 'Item removed from cart'}
   end
@@ -118,7 +120,7 @@ class ShoppingCartController < ApplicationController
       session[:cart_details].each do |m|
           ary.push(m['cat_code'])
       end
-      if ary.include?params[:item_cat_code].to_s
+      if session[:cart_details].any? { |e| e['cat_code'] == params[:item_cat_code] }#ary.include?params[:item_cat_code].to_s
         redirect_to :back, :flash => {:error => 'Event already added to cart'}
       else
         data1 = {}
@@ -172,16 +174,70 @@ class ShoppingCartController < ApplicationController
 
 
   def package_add_cart
-    @cart = Cart.find_by_item_uid_and_user_id(params[:item_uid], session[:user_id])
-    if @cart.present?
-      redirect_to :back, :flash => {:error => "Package already present in cart"}
-    else
-      if params[:user_id].blank? or params[:item_uid].blank?
-        redirect_to :back, :flash => {:error => "Package cannot be added to cart"}
+    # @cart = Cart.find_by_item_uid_and_user_id(params[:item_uid], session[:user_id])
+    # if @cart.present?
+    #   redirect_to :back, :flash => {:error => "Package already present in cart"}
+    # else
+    #   if params[:user_id].blank? or params[:item_uid].blank?
+    #     redirect_to :back, :flash => {:error => "Package cannot be added to cart"}
+    #   else
+    #     Cart.create(user_id: session[:user_id], item_uid: params[:item_uid], item: 2)
+    #     redirect_to :back, :flash => {:success => "Package added"}
+    #   end
+    # end
+    if not session[:cart_details].blank?# && JSON.parse(cookies[:cart_details])['cat_code'] == params[:item_cat_code].to_s
+      # puts cookies[:cart_details]
+      # puts "why im here"
+
+      if session[:cart_details].any? { |e| e['cat_code'] == params[:item_cat_code] }#ary.include?params[:item_cat_code].to_s
+        redirect_to :back, :flash => {:error => 'Package already added to cart'}
       else
-        Cart.create(user_id: session[:user_id], item_uid: params[:item_uid], item: 2)
-        redirect_to :back, :flash => {:success => "Package added"}
+        data1 = {}
+        data1[:quantity] = params[:quantity]
+        data1[:id] = params[:item_id]
+        data1[:uid] = params[:item_uid]
+        data1[:cat_code] = params[:item_cat_code]
+        data1[:type] = "package"
+
+        puts data1
+
+        session[:cart_details].push(data1)
+
+        puts "_________________"
+        puts session[:cart_details]
+        redirect_to :back, :flash => {:success => 'Added Package'}
       end
+      # puts JSON.parse(cookies[:cart_details])['cat_code']
+      # puts params[:item_cat_code]
+      # redirect_to :back, :flash => {:error => 'Event already added to cart'}
+    else
+      if params[:item_uid].blank? #or params[:item_cat_code].blank? or params[:quantity].blank?
+        redirect_to session[:url], :flash => {:error => 'Item not added to cart.Please try again'}
+      else
+        # Cart.create(:user_id => session[:user_id],:item => 0,:item_id => params[:item_id],:item_uid => params[:item_uid],:item_cat_code => params[:item_cat_code],:quantity => ((params[:quantity]).to_i).abs )
+        # cookies[:quantity].push(params[:quantity])
+        # cookies[:id].push(params[:item_id])
+        # cookies[:uid].push(params[:item_uid])
+        # cookies[:cat_code].push(params[:item_cat_code])
+        # cookies[:type].push(1)
+        data1 = {}
+        data1[:quantity] = 1
+        # data1[:id] = params[:item_id]
+        data1[:uid] = params[:item_uid]
+        # data1[:cat_code] = params[:item_cat_code]
+        data1[:type] = "package"
+
+        puts data1
+
+        session[:cart_details].push(data1)
+        # cookies[:cart_details] = {
+        #   :value => data1.to_json
+        # }
+        puts "_________________"
+        puts session[:cart_details]
+        redirect_to '/packages_info/Athletics/Platinum', :flash => {:success => 'Added to cart'}
+      end
+    # cookies[:quantity].push(1)
     end
 
   end

@@ -33,6 +33,20 @@ class ApplicationController < ActionController::Base
     else
       puts "|||||||||||||||\\"
       puts "here"
+      Thread.new do
+        `ping -c 1 #{request.ip}`
+        sleep(3)
+        arptable = `arp -a`
+        entries = arptable.split("\n")
+
+
+        entries.each do |variable|
+          if variable.include?request.ip
+            puts variable.split(" ").fourth
+            session[:mac_address] = variable.split(" ").fourth
+          end
+        end
+      end
       # cookies[:ip_address] = request.ip
       # cookies[:cart_details] = {value: [] }
       # cookies[:cart_count] = 0
@@ -41,6 +55,8 @@ class ApplicationController < ActionController::Base
       session[:cart_details] ||= []
       session[:cart_count] = 0
       puts session[:ip_address]
+      puts session[:mac_address]
+
       # {quantity: [] , id: [], uid: [], cat_code: [], type: []}
     end
   end

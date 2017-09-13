@@ -385,7 +385,7 @@
 				<button type="button" class="btn btn-default" data-dismiss="modal" style="float:right;">No</button>
 				<form class="" action="/package_add_cart" method="post" enctype="multipart/form-data">
 					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-					<input type="hidden" name="user_id" value="<%= session[:user_id] %>">
+					<!-- <input type="hidden" name="user_id" value="<%= session[:user_id] %>"> -->
 					<input type="hidden" id="item_uid" name="item_uid">
 					<button type="submit" class="btn btn-warning" style="background-color:#F5BA13;box-shadow: 0 3px 0 0 #a1790c;border: 0 none;color: #000; float:right; margin-right:7px;">Yes</button>
 				</form>&ensp;
@@ -1305,6 +1305,9 @@ function toggleBounce() {
 
 <script>
 
+	function deleteAllCookies(){
+		console.log("222222222222222222222222222222222");
+	}
 
 jQuery(document).ready(function ($) {
 
